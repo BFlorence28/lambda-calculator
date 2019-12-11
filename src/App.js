@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 // import Logo from "./components/DisplayComponents/Logo";
 import Numbers from "./components/ButtonComponents/NumberButtons/Numbers";
@@ -14,14 +14,19 @@ import Specials from "./components/ButtonComponents/SpecialButtons/Specials";
 import Logo from "./components/DisplayComponents/Logo";
 
 function App() {
+  const [total, setTotal] = useState(0);
+  function changeDisplay(numX) {
+      setTotal(numX)
+  }
+
   return (
     <div className="container">
       <div className="App">
-        <Display />
+        <Display total={total}/>
         <div className="allButtons">
           <div className="specialNumbers">
             <Specials />
-            <Numbers />
+            <Numbers countNumbers={changeDisplay}/>
           </div>
 
             <Operators />
